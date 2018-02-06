@@ -1,0 +1,39 @@
+{
+  "name": "trie-lib",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Stefdelec <s.delecroix@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watch",
+    "start": "webpack --display-error-details",
+    "build": "webpack --display-error-details",
+    "transpile": "tsc -m es6 --outDir lib-esm",
+    "launch": "nodemon ./build/index.js",
+    "typedoc": "./node_modules/.bin/typedoc --out documention ./src --exclude  \"**/*test.ts\""
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.9",
+    "jest": "^21.2.1",
+    "nodemon": "^1.13.3",
+    "ts-jest": "^22.0.0",
+    "ts-loader": "^3.2.0",
+    "typedoc": "^0.9.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  }
+}
