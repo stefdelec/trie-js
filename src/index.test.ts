@@ -5,11 +5,11 @@ describe('trie ', () => {
     it('build tree with argument should be the same as withtout if words are identicals', () => {
         const words = ['john', "doe", "johnny"];
         const trie = new Trie(words);
-        expect(trie.buildTree()).toEqual(trie.buildTree(words));
+        expect(trie.buildTrie()).toEqual(trie.buildTrie(words));
         expect(
-            JSON.stringify(trie.buildTree())
+            JSON.stringify(trie.buildTrie())
             ===
-            JSON.stringify(trie.buildTree([...words, 'paulo']))
+            JSON.stringify(trie.buildTrie([...words, 'paulo']))
         ).toBeFalsy();
     })
 })
@@ -19,7 +19,7 @@ describe('contains', () => {
     it('It should contain word from what it is created', () => {
         const words = ['john', "doe", "johnny","johns"];
         const trie = new Trie(words);
-        trie.buildTree();
+        trie.buildTrie();
         words.forEach(word => {
             expect(trie.contains(word)).toBeTruthy();
         })
@@ -27,7 +27,7 @@ describe('contains', () => {
     it('It should return false if it doesnt', () => {
         const words = ['john', "doe", "johnny"];
         const trie = new Trie(words);
-        trie.buildTree();
+        trie.buildTrie();
         expect(trie.contains('johnnys')).toBeFalsy();
         expect(trie.contains('johnn')).toBeFalsy();
         expect(trie.contains('joh')).toBeFalsy();
@@ -42,7 +42,7 @@ describe('isPrefix', () => {
     it('It should contain word from what it is created', () => {
         const words = ['john', "doe", "johnny","johns"];
         const trie = new Trie(words);
-        trie.buildTree();
+        trie.buildTrie();
         words.forEach(word => {
             expect(trie.isPrefix(word)).toBeTruthy();
         })
@@ -50,7 +50,7 @@ describe('isPrefix', () => {
     it('It should return false if it doesnt', () => {
         const words = ['john', "doe", "johnny"];
         const trie = new Trie(words);
-        trie.buildTree();
+        trie.buildTrie();
         expect(trie.isPrefix('johnnys')).toBeFalsy();
         expect(trie.isPrefix('johnn')).toBeFalsy();
         expect(trie.isPrefix('joh')).toBeFalsy();

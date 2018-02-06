@@ -9,6 +9,7 @@
     "start": "webpack --display-error-details",
     "build": "webpack --display-error-details",
     "transpile": "tsc -m es6 --outDir lib-esm",
+    "example":"nodemon ./examples/example.js",
     "launch": "nodemon ./build/index.js",
     "typedoc": "./node_modules/.bin/typedoc --out documention ./src --exclude  \"**/*test.ts\""
   },

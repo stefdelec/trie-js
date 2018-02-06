@@ -80,18 +80,30 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var key;
+(function (key) {
+    key["end"] = "*";
+    key["forTrue"] = "#";
+})(key || (key = {}));
 var Trie = (function () {
     function Trie(words) {
         this._trieObject = {};
         this._words = words;
     }
+    Object.defineProperty(Trie.prototype, "trieObject", {
+        get: function () {
+            return this._trieObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Trie.prototype.contains = function (word, nestedObject) {
         nestedObject = nestedObject || this._trieObject;
         if (nestedObject.hasOwnProperty(word[0])) {
             return this.contains(word.substr(1), nestedObject[word[0]]);
         }
         else {
-            return word.length === 0 && nestedObject.hasOwnProperty('end');
+            return word.length === 0 && nestedObject.hasOwnProperty(key.end);
         }
     };
     Trie.prototype.isPrefix = function (word, nestedObject) {
@@ -100,11 +112,10 @@ var Trie = (function () {
             return this.contains(word.substr(1), nestedObject[word[0]]);
         }
         else {
-            console.log("aa", word);
             return word.length === 0;
         }
     };
-    Trie.prototype.buildTree = function (words) {
+    Trie.prototype.buildTrie = function (words) {
         var _this = this;
         this._words = words || this._words;
         this._words.forEach(function (word) {
@@ -116,7 +127,7 @@ var Trie = (function () {
                     nestedObj[letter] = {};
                 }
                 if (index === arr.length - 1) {
-                    nestedObj[letter]['end'] = true;
+                    nestedObj[letter][key.end] = '';
                 }
                 nestedObj = nestedObj[letter];
             });
